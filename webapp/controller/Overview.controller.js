@@ -9,6 +9,18 @@ sap.ui.define([
 
         return Controller.extend("sap.training.exc.controller.Overview", {
 
-
+            onSave: function () {
+                if (!this.pDialog) {
+                  this.pDialog = this.loadFragment({
+                    name: "sap.training.exc.view.Dialog"
+                  });
+                }
+                this.pDialog.then(function (oDialog) {
+                  oDialog.open();
+                });
+              },
+              onCloseDialog: function () {
+                this.byId("dialog").close();
+              }
         });
     });
